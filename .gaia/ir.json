@@ -1,0 +1,128 @@
+{
+  "ir_hash": "sha256:cf8cfd5dfb5580c2e2ecc849f6309e3f68e2d8e5d09101b8c0b0f767b4e46daf",
+  "knowledges": [
+    {
+      "content": "CMB measurements (Planck 2018): universe is spatially flat.",
+      "content_hash": "2fc00f2cc26e3a99fc935aa89c157ddb49572ea548307173f1480a4461ef3c96",
+      "id": "reg:dark_energy::flat_universe",
+      "label": "flat_universe",
+      "parameters": [],
+      "type": "setting"
+    },
+    {
+      "content": "General relativity valid at cosmological scales; Friedmann equations govern expansion.",
+      "content_hash": "762786a8e506af19a4cf055c39ff0c3c142d3611779e2844fe77a155ab63ed63",
+      "id": "reg:dark_energy::gr_valid",
+      "label": "gr_valid",
+      "parameters": [],
+      "type": "setting"
+    },
+    {
+      "content": "Type Ia supernovae (Riess 1998, Perlmutter 1999): distant SNe Ia are $\\sim 0.2\\,\\text{mag}$ fainter — expansion is accelerating.",
+      "content_hash": "27ffb77ee75f7f8b9a87cadde375966690a7baa01cf8888758b0cd5a56beb1fe",
+      "id": "reg:dark_energy::sn_observation",
+      "label": "sn_observation",
+      "parameters": [],
+      "type": "claim"
+    },
+    {
+      "content": "CMB power spectrum (Planck 2018): $\\Omega_\\text{total} = 1.000 \\pm 0.002$, $\\Omega_\\Lambda \\approx 0.68$.",
+      "content_hash": "335810eae1eed467e7cc78158eea5e41cd190b03a744172a64cd253d3ebfc312",
+      "id": "reg:dark_energy::cmb_data",
+      "label": "cmb_data",
+      "parameters": [],
+      "type": "claim"
+    },
+    {
+      "content": "Dark energy: $\\Omega_\\Lambda \\approx 0.68$ of total energy budget.",
+      "content_hash": "d1bebf3045f58b2c9657516240427678c2cc0f8d35561d5a567ae06f19d7d22d",
+      "id": "reg:dark_energy::dark_energy_fraction",
+      "label": "dark_energy_fraction",
+      "parameters": [],
+      "type": "claim"
+    },
+    {
+      "content": "QFT predicts vacuum energy density $\\rho_\\text{vac} \\sim 10^{76}\\,\\text{GeV}^4$, vastly exceeding observed $\\rho_\\Lambda$.",
+      "content_hash": "f57b470fffb8700f29e939d04c690549d3093f2a60ac46bf2d1009e5b001f433",
+      "id": "reg:dark_energy::qft_vacuum_energy",
+      "label": "qft_vacuum_energy",
+      "parameters": [],
+      "type": "claim"
+    },
+    {
+      "content": "not_both_true(dark_energy_fraction, qft_vacuum_energy)",
+      "content_hash": "e309cc6e305f58636e0da79e248e56391f05539b3b1ad0125ff1047d0d4ae898",
+      "id": "reg:dark_energy::vacuum_catastrophe",
+      "label": "vacuum_catastrophe",
+      "metadata": {
+        "helper_kind": "contradiction_result"
+      },
+      "parameters": [],
+      "type": "claim"
+    },
+    {
+      "content": "Planck CMB power spectrum: independent $\\Omega_\\Lambda = 0.6847 \\pm 0.0073$.",
+      "content_hash": "7d42a65146cd968103c0dc11749608291865fb8a474b726f3ed4cc0853ccafb6",
+      "id": "reg:dark_energy::cmb_power_spectrum",
+      "label": "cmb_power_spectrum",
+      "parameters": [],
+      "type": "claim"
+    },
+    {
+      "content": "Dark energy $\\Omega_\\Lambda \\approx 0.68$ confirmed by independent probes.",
+      "content_hash": "afd698a8b55d9926144f1f2d2d502a1888ac9f1d8605ba179a61d85d558604ff",
+      "id": "reg:dark_energy::cross_validation",
+      "label": "cross_validation",
+      "parameters": [],
+      "type": "claim"
+    },
+    {
+      "content": "Is dark energy a cosmological constant $\\Lambda$ or dynamical quintessence?",
+      "content_hash": "62f414c440dc586383d32b6b9ffe9e7b39e8174efe06ac6f01392ed4d438ccba",
+      "id": "reg:dark_energy::nature_question",
+      "label": "nature_question",
+      "parameters": [],
+      "type": "question"
+    }
+  ],
+  "namespace": "reg",
+  "operators": [
+    {
+      "conclusion": "reg:dark_energy::vacuum_catastrophe",
+      "metadata": {
+        "reason": "Observed dark energy density disagrees with QFT vacuum energy by ~120 orders of magnitude."
+      },
+      "operator": "contradiction",
+      "operator_id": "lco_ecb36629435e71d4",
+      "scope": "local",
+      "variables": [
+        "reg:dark_energy::dark_energy_fraction",
+        "reg:dark_energy::qft_vacuum_energy"
+      ]
+    }
+  ],
+  "package_name": "dark_energy",
+  "scope": "local",
+  "strategies": [
+    {
+      "conclusion": "reg:dark_energy::dark_energy_fraction",
+      "premises": [
+        "reg:dark_energy::sn_observation",
+        "reg:dark_energy::cmb_data"
+      ],
+      "scope": "local",
+      "strategy_id": "lcs_076f7be6d6b73e41",
+      "type": "noisy_and"
+    },
+    {
+      "conclusion": "reg:dark_energy::cross_validation",
+      "premises": [
+        "reg:dark_energy::dark_energy_fraction",
+        "reg:dark_energy::cmb_power_spectrum"
+      ],
+      "scope": "local",
+      "strategy_id": "lcs_367245176d9879db",
+      "type": "noisy_and"
+    }
+  ]
+}
