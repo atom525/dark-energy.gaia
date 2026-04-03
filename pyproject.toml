@@ -1,0 +1,19 @@
+[project]
+name = "dark-energy-gaia"
+version = "1.0.0"
+description = "Dark energy and the cosmological constant problem — Gaia Lang v5"
+authors = [{name = "Gaia Project"}]
+requires-python = ">=3.12"
+dependencies = []
+
+[tool.setuptools.packages.find]
+include = ["dark_energy*"]
+
+[tool.gaia]
+namespace = "reg"
+type = "knowledge-package"
+uuid = "f4a5b6c7-d8e9-0123-defa-456789012345"
+
+[build-system]
+requires = ["setuptools>=69.0"]
+build-backend = "setuptools.build_meta"
